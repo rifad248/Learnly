@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typixel Learn — Online Courses</title>
+<meta name="description" content="Typixel Learn — members-only video courses. Sign in with your phone and continue where you left off.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ icon sprite ============ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-logo" viewBox="0 0 24 24">
+    <rect x="2"  y="2"  width="6" height="6" rx="1" fill="currentColor"/>
+    <rect x="9"  y="2"  width="6" height="6" rx="1" fill="currentColor" opacity=".4"/>
+    <rect x="16" y="2"  width="6" height="6" rx="1" style="fill:var(--red)"/>
+    <rect x="2"  y="9"  width="6" height="6" rx="1" fill="currentColor" opacity=".4"/>
+    <rect x="9"  y="9"  width="6" height="6" rx="1" style="fill:var(--red)"/>
+    <rect x="16" y="9"  width="6" height="6" rx="1" fill="currentColor"/>
+    <rect x="2"  y="16" width="6" height="6" rx="1" style="fill:var(--red)" opacity=".8"/>
+    <rect x="9"  y="16" width="6" height="6" rx="1" fill="currentColor"/>
+    <rect x="16" y="16" width="6" height="6" rx="1" fill="currentColor" opacity=".4"/>
+  </symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.3v13.4c0 .8.9 1.3 1.6.9l10.5-6.7c.6-.4.6-1.4 0-1.8L9.6 4.4c-.7-.4-1.6.1-1.6.9z" fill="currentColor"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="4.5" width="4" height="15" rx="1.2" fill="currentColor"/><rect x="14" y="4.5" width="4" height="15" rx="1.2" fill="currentColor"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 24 24"><path d="M19 6l-9.5 6L19 18z" fill="currentColor"/><rect x="6" y="6" width="2.4" height="12" rx="1.2" fill="currentColor"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M5 6l9.5 6L5 18z" fill="currentColor"/><rect x="15.6" y="6" width="2.4" height="12" rx="1.2" fill="currentColor"/></symbol>
+  <symbol id="i-vol" viewBox="0 0 24 24"><path d="M4 9.5v5c0 .6.4 1 1 1h2.6l4.5 3.6c.7.5 1.6 0 1.6-.8V5.7c0-.8-.9-1.3-1.6-.8L7.6 8.5H5c-.6 0-1 .4-1 1z" fill="currentColor"/><path d="M16.2 8.6a4.8 4.8 0 010 6.8M18.8 6a8.4 8.4 0 010 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9.5v5c0 .6.4 1 1 1h2.6l4.5 3.6c.7.5 1.6 0 1.6-.8V5.7c0-.8-.9-1.3-1.6-.8L7.6 8.5H5c-.6 0-1 .4-1 1z" fill="currentColor"/><path d="M16.5 9.5l5 5m0-5l-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24"><path d="M4 9V5.5C4 4.7 4.7 4 5.5 4H9M15 4h3.5C19.3 4 20 4.7 20 5.5V9M20 15v3.5c0 .8-.7 1.5-1.5 1.5H15M9 20H5.5C4.7 20 4 19.3 4 18.5V15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-compress" viewBox="0 0 24 24"><path d="M9 4v3.5C9 8.3 8.3 9 7.5 9H4M20 9h-3.5C15.7 9 15 8.3 15 7.5V4M15 20v-3.5c0-.8.7-1.5 1.5-1.5H20M4 15h3.5C8.3 15 9 15.7 9 16.5V20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M14.5 5.5L8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="M9.5 5.5L16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V6M6.5 11.5L12 6l5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v13M6.5 12.5L12 18l5.5-5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4.5 19.5h3.2L19 8.2a2 2 0 00-2.8-2.8L4.9 16.7a1 1 0 00-.3.7l-.1 2.1zM13.8 6.6l2.8 2.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4.5 6.5h15M9.5 6.5v-2a1 1 0 011-1h3a1 1 0 011 1v2M6.5 6.5l.8 12a1.5 1.5 0 001.5 1.4h6.4a1.5 1.5 0 001.5-1.4l.8-12M10 10.5v6M14 10.5v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M10 4H6a2 2 0 00-2 2v12a2 2 0 002 2h4M15 8l4 4-4 4M9 12h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="9.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 10.5V8a3.5 3.5 0 017 0v2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="15.2" r="1.4" fill="currentColor"/></symbol>
+</svg>
+
+<!-- ================= AUTH ================= -->
+<section id="view-auth" class="view active">
+  <div class="auth-grid">
+    <aside class="auth-brand">
+      <canvas id="pixelCanvas"></canvas>
+      <div class="brand-inner">
+        <div class="brand-top">
+          <svg class="logo-mark"><use href="#i-logo"/></svg>
+          <span class="brand-name">Typixel <em>Learn</em></span>
+        </div>
+        <div class="brand-hero">
+          <p class="mono-eyebrow">Members-only course platform</p>
+          <h1>Learn type,<br>down to the<br><span class="red">pixel.</span></h1>
+          <p class="brand-sub">Structured video sessions for enrolled Typixel students. Sign in with your phone — we'll remember exactly where you stopped.</p>
+        </div>
+        <div class="brand-foot">
+          <span class="mono-eyebrow">Secure OTP access</span>
+          <span class="mono-eyebrow">© <span id="yearNow">2025</span> Typixel</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="auth-panel">
+      <div class="auth-mobile-brand">
+        <svg class="logo-mark"><use href="#i-logo"/></svg>
+        <span class="brand-name">Typixel <em>Learn</em></span>
+      </div>
+
+      <div class="auth-card">
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-tab="student" type="button">Student</button>
+          <button class="auth-tab" data-tab="admin" type="button">Admin</button>
+        </div>
+
+        <!-- student: phone -> OTP -->
+        <div id="pane-student" class="auth-pane active">
+          <div id="otpStepPhone">
+            <h2>Welcome back</h2>
+            <p class="auth-sub">Sign in with your phone number — we'll text you a one-time code.</p>
+            <form id="phoneForm" novalidate>
+              <label class="field-label mono-eyebrow" for="phoneInput">Phone number</label>
+              <input id="phoneInput" class="input" type="tel" placeholder="+1 415 555 2671" autocomplete="tel">
+              <button id="sendOtpBtn" class="btn btn-primary btn-block" type="submit">Send code</button>
+            </form>
+          </div>
+          <div id="otpStepCode" hidden>
+            <button class="linkback" id="backToPhone" type="button"><svg class="ic"><use href="#i-back"/></svg> Change number</button>
+            <h2>Enter your code</h2>
+            <p class="auth-sub">Six digits sent to <strong id="otpPhoneLabel"></strong></p>
+            <form id="otpForm" novalidate>
+              <div class="otp-row" id="otpRow">
+                <input class="otp-input" type="text" inputmode="numeric" maxlength="1" autocomplete="one-time-code">
+                <input class="otp-input" type="text" inputmode="numeric" maxlength="1">
+                <input class="otp-input" type="text" inputmode="numeric" maxlength="1">
+                <input class="otp-input" type="text" inputmode="numeric" maxlength="1">
+                <input class="otp-input" type="text" inputmode="numeric" maxlength="1">
+                <input class="otp-input" type="text" inputmode="numeric" maxlength="1">
+              </div>
+              <button id="verifyBtn" class="btn btn-primary btn-block" type="submit">Verify &amp; continue</button>
+            </form>
+            <p class="resend-line"><button class="textbtn" id="resendBtn" type="button">Resend code</button></p>
+          </div>
+        </div>
+
+        <!-- admin: email + password -->
+        <div id="pane-admin" class="auth-pane">
+          <h2>Admin sign in</h2>
+          <p class="auth-sub">Manage courses, lessons and publishing.</p>
+          <form id="adminForm" novalidate>
+            <label class="field-label mono-eyebrow" for="adminEmail">Email</label>
+            <input id="adminEmail" class="input" type="email" placeholder="admin@typixel.com" autocomplete="username">
+            <label class="field-label mono-eyebrow" for="adminPass">Password</label>
+            <input id="adminPass" class="input" type="password" placeholder="••••••••" autocomplete="current-password">
+            <button id="adminLoginBtn" class="btn btn-primary btn-block" type="submit">Sign in</button>
+          </form>
+          <p class="demo-admin-hint" id="demoAdminHint" hidden>Demo admin — email <code>admin@typixel.com</code> · password <code>admin123</code></p>
+        </div>
+
+        <p class="demo-note" id="demoNote" hidden><strong>Demo mode.</strong> No Supabase project is configured yet, so data lives in this browser only. Add your project URL + anon key at the top of <code>script.js</code> to go live.</p>
+      </div>
+
+      <p class="auth-foot mono-eyebrow">Enrolled students only · Sessions are watermarked per account</p>
+    </main>
+  </div>
+</section>
+
+<!-- ================= STUDENT DASHBOARD ================= -->
+<section id="view-dashboard" class="view">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-brand"><svg class="logo-mark"><use href="#i-logo"/></svg>Typixel <em>Learn</em></div>
+      <div class="topbar-user">
+        <div class="user-chip">
+          <span class="user-avatar" id="userAvatar">S</span>
+          <span class="user-meta">
+            <span class="u-name" id="userName">—</span>
+            <span class="mono-eyebrow" id="userPhone">—</span>
+          </span>
+        </div>
+        <button class="btn btn-ghost btn-icon js-logout" title="Sign out"><svg class="ic"><use href="#i-logout"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dash-main">
+    <div id="notEnrolled" class="empty-panel" hidden>
+      <svg class="ic"><use href="#i-lock"/></svg>
+      <h3>No active enrollment</h3>
+      <p>You're signed in, but this account isn't enrolled in a course yet. Contact Typixel and we'll get you access.</p>
+    </div>
+
+    <div id="dashContent" class="dash-grid">
+      <section class="course-card">
+        <p class="mono-eyebrow">Enrolled course</p>
+        <h2 id="courseTitle" class="course-title">—</h2>
+        <p id="courseDesc" class="course-desc"></p>
+        <div class="course-progress">
+          <div class="progress-ring">
+            <svg viewBox="0 0 84 84">
+              <circle class="ring-bg" cx="42" cy="42" r="36"></circle>
+              <circle class="ring-fill" id="ringFill" cx="42" cy="42" r="36"></circle>
+            </svg>
+            <span class="ring-pct" id="ringPct">0%</span>
+          </div>
+          <div class="progress-stats">
+            <div class="stat"><span class="stat-num" id="statDone">0</span><span class="mono-eyebrow">Completed</span></div>
+            <div class="stat"><span class="stat-num" id="statTotal">0</span><span class="mono-eyebrow">Sessions</span></div>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-lg btn-block" id="continueBtn"><svg class="ic"><use href="#i-play"/></svg> Continue learning</button>
+      </section>
+
+      <section class="lessons-panel">
+        <div class="panel-head">
+          <h3 class="panel-title">Video sessions</h3>
+          <span class="mono-eyebrow" id="lessonsCount"></span>
+        </div>
+        <div class="lesson-list" id="lessonList"></div>
+      </section>
+    </div>
+  </main>
+</section>
+
+<!-- ================= PLAYER ================= -->
+<section id="view-player" class="view">
+  <header class="player-topbar">
+    <div class="player-topbar-inner">
+      <button class="btn btn-ghost" id="playerBack"><svg class="ic"><use href="#i-back"/></svg> Back to course</button>
+      <span class="mono-eyebrow" id="playerCrumb">—</span>
+    </div>
+  </header>
+
+  <main class="player-main">
+    <div class="player-col">
+      <div class="player paused ctrl-on" id="playerBox">
+        <video id="video" playsinline preload="metadata" controlslist="nodownload noplaybackrate noremoteplayback" disablepictureinpicture></video>
+
+        <div class="player-scrim"></div>
+        <div class="wm" id="watermark"></div>
+        <div class="center-hint"><span class="center-circle"><svg class="ic"><use href="#i-play"/></svg></span></div>
+        <div class="player-flash" id="playerFlash"><svg class="ic"><use href="#i-play"/></svg></div>
+        <div class="player-spinner" id="playerSpinner"></div>
+
+        <div class="controls" id="controls">
+          <div class="seek" id="seekBar">
+            <div class="seek-track">
+              <div class="seek-buffer" id="seekBuffer"></div>
+              <div class="seek-fill" id="seekFill"><span class="seek-knob"></span></div>
+            </div>
+            <div class="seek-tip" id="seekTip">0:00</div>
+          </div>
+          <div class="controls-row">
+            <div class="ctrl-left">
+              <button class="pbtn" id="btnPlay" title="Play / pause (Space)"><svg class="ic"><use id="playUse" href="#i-play"/></svg></button>
+              <button class="pbtn" id="btnPrev" title="Previous lesson"><svg class="ic"><use href="#i-prev"/></svg></button>
+              <button class="pbtn" id="btnNext" title="Next lesson"><svg class="ic"><use href="#i-next"/></svg></button>
+              <div class="vol-group">
+                <button class="pbtn" id="btnMute" title="Mute (M)"><svg class="ic"><use id="muteUse" href="#i-vol"/></svg></button>
+                <input type="range" class="vol-slider" id="volSlider" min="0" max="1" step="0.05" value="1" aria-label="Volume">
+              </div>
+              <span class="time mono-eyebrow" id="timeLabel">0:00 / 0:00</span>
+            </div>
+            <div class="ctrl-right">
+              <div class="pop-wrap">
+                <button class="pbtn pbtn-txt" id="btnSpeed" title="Playback speed">1×</button>
+                <div class="pop" id="speedPop"></div>
+              </div>
+              <div class="pop-wrap">
+                <button class="pbtn pbtn-txt" id="btnQuality" title="Quality">Auto</button>
+                <div class="pop" id="qualityPop"></div>
+              </div>
+              <button class="pbtn" id="btnFull" title="Fullscreen (F)"><svg class="ic"><use id="fullUse" href="#i-expand"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-meta">
+        <p class="mono-eyebrow" id="metaCrumb">SESSION</p>
+        <h2 id="lessonTitle">—</h2>
+        <p id="lessonDesc" class="lesson-desc"></p>
+        <div class="player-nav">
+          <button class="btn btn-ghost" id="navPrev"><svg class="ic"><use href="#i-back"/></svg> Previous</button>
+          <button class="btn btn-primary" id="navNext">Next lesson <svg class="ic"><use href="#i-chev-r"/></svg></button>
+        </div>
+        <p class="rec-note">Every session is watermarked with your account. Downloads are disabled, but screen recording can't be fully prevented — please respect the content and don't redistribute it.</p>
+      </div>
+    </div>
+
+    <aside class="playlist">
+      <p class="panel-title">Up next</p>
+      <div class="playlist-list" id="playlistList"></div>
+    </aside>
+  </main>
+</section>
+
+<!-- ================= ADMIN ================= -->
+<section id="view-admin" class="view">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-brand"><svg class="logo-mark"><use href="#i-logo"/></svg>Typixel <em>Learn</em></div>
+      <div class="topbar-user">
+        <span class="admin-chip mono-eyebrow">Admin</span>
+        <button class="btn btn-ghost btn-icon js-logout" title="Sign out"><svg class="ic"><use href="#i-logout"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="admin-head">
+      <div>
+        <p class="mono-eyebrow">Admin panel</p>
+        <h2 id="adminCourseTitle">Course</h2>
+        <p class="admin-sub mono-eyebrow" id="adminStats">—</p>
+      </div>
+      <button class="btn btn-primary" id="addLessonBtn"><svg class="ic"><use href="#i-plus"/></svg> Add lesson</button>
+    </div>
+
+    <div id="noCourse" class="empty-panel" hidden>
+      <h3>Create your first course</h3>
+      <p>Lessons live inside a course. Give it a name to get started.</p>
+      <form id="courseForm" class="course-create">
+        <input id="courseTitleInput" class="input" placeholder="Course title" required>
+        <input id="courseDescInput" class="input" placeholder="Short description (optional)">
+        <button class="btn btn-primary" type="submit">Create course</button>
+      </form>
+    </div>
+
+    <div class="admin-list" id="adminList"></div>
+  </main>
+</section>
+
+<!-- ============ modals ============ -->
+<div class="modal-backdrop" id="lessonModal" hidden>
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="lessonModalTitle">Add lesson</h3>
+      <button class="btn btn-ghost btn-icon" id="lessonModalClose" type="button"><svg class="ic"><use href="#i-x"/></svg></button>
+    </div>
+    <form id="lessonForm" novalidate>
+      <input type="hidden" id="lessonId">
+      <label class="field-label mono-eyebrow" for="fTitle">Lesson title</label>
+      <input id="fTitle" class="input" placeholder="e.g. Anatomy of a Letterform" required>
+      <label class="field-label mono-eyebrow" for="fDesc">Description</label>
+      <textarea id="fDesc" class="input" rows="2" placeholder="Optional"></textarea>
+      <label class="field-label mono-eyebrow" for="fVideo">Video URL (MP4)</label>
+      <input id="fVideo" class="input" type="url" placeholder="https://cdn.example.com/lesson.mp4" required>
+      <label class="field-label mono-eyebrow" for="fThumb">Thumbnail URL</label>
+      <input id="fThumb" class="input" type="url" placeholder="https://…/thumb.jpg (optional)">
+      <details class="quality-extra">
+        <summary class="mono-eyebrow">Optional quality sources</summary>
+        <input id="f720" class="input" type="url" placeholder="720p video URL">
+        <input id="f480" class="input" type="url" placeholder="480p video URL">
+      </details>
+      <label class="check-row"><input type="checkbox" id="fPublish" checked><span>Published — visible to enrolled students</span></label>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="lessonModalCancel">Cancel</button>
+        <button class="btn btn-primary" id="lessonSaveBtn" type="submit">Add lesson</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="confirmModal" hidden>
+  <div class="modal modal-sm">
+    <h3 id="confirmTitle">Are you sure?</h3>
+    <p class="auth-sub" id="confirmText" style="margin-top:8px"></p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="confirmCancel" type="button">Cancel</button>
+      <button class="btn btn-danger" id="confirmOk" type="button">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+</body>
+</html>
